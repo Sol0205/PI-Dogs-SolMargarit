@@ -2,7 +2,7 @@ const axios = require("axios");
 const { Dog, Temperament, YOUR_API_KEY } = require("../../db");
 
 const getDogByIdFromProvider = async (id) => {
-  const result = await axios.get(`https://api.thedogapi.com/breeds?apiKey=${YOUR_API_KEY}`);
+  const result = await axios.get(`https://api.thedogapi.com/v1/breeds?apiKey=${YOUR_API_KEY}`);
   return result.data;
 };
 
@@ -19,7 +19,6 @@ const getAllDogsFromProvider = async () => {
     const data = await axios.get(urlProvider)
     return data.data
   } catch (err) {
-    console.log('err: ', err)
     throw err
   }
 };

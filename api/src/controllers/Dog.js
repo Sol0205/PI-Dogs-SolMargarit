@@ -18,7 +18,7 @@ const getApiInfo = async () => {
         image: elemento.image,
       };
     });
-    return console.log(perro);
+    return perro;
   } catch (err) {
     throw err;
   }
@@ -69,7 +69,7 @@ const dogs = async (req, res) => {
           .join("")
           .includes(name.toLowerCase().split(" ").join(""))
       );
-      console.log("dogName: ", dogName);
+      // console.log("dogName: ", dogName);
       dogName.length != 0
         ? res.status(200).json(dogName)
         : res.status(404).send("Dog does not exist");

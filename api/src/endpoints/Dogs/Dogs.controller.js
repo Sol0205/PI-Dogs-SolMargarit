@@ -64,7 +64,7 @@ const getById = async (req, res) => {
     if (id) {
       Boolean(infoOfOneDog)
        ? res.status(200).json(infoOfOneDog)
-       : res.status(404),json('Perro no encontrado')
+       : res.status(404).json('Perro no encontrado')
     }
   } catch (err) {
     res.json({ err })
