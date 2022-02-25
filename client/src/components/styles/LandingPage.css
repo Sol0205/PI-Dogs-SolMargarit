@@ -1,0 +1,49 @@
+body{
+    background: url('../../images/dog-landing.jpg') no-repeat 50% fixed;
+}
+
+.container_landing{
+    margin-top: 10vh;
+    width: 50vh;
+    display: block;
+    position: relative;
+}
+
+.titulos{
+    font-weight: 200;
+    font-size: 80px;
+    display: block;
+    padding: 5px;
+    box-shadow: 1px 1px 5px 2px #00000000;
+    color: #e7dfcf;
+    margin: 0;
+    padding: 2vh;
+    background: #000000a1;
+    text-align: left;
+}
+
+.wrapper-link{
+    font-size: 40px;
+    color: #ff9800;
+    padding: 10px 10px;
+    width: 30%;
+    margin: 0;
+    margin-top: 24px;
+    cursor: pointer;
+    border-radius: 3px;
+    border: 1px solid #ff9800;
+    display: block;
+    position: absolute;
+    right: 0;
+    transition: 200ms;
+}
+
+.wrapper-link:hover{
+    background: #ff9800;
+    color: black;
+    transition: 200ms;
+}
+
+.link {
+    all: unset;
+}

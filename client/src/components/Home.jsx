@@ -26,6 +26,10 @@ export default function Home(){
             <Link to='/home/DogCreate' >
                 Crear Perro
             </Link>
+            <br/>
+            <Link to='/'>
+                Volver a la LandingPage
+            </Link>
 
             <h1> Esta es el Home, acá van las cards, etc </h1>
 
@@ -56,7 +60,7 @@ export default function Home(){
                     <option value= 'created'>Creados</option>
                     <option value= 'api'>Existentes</option>
                 </select>
-                
+
                 {
                     allDogs?.map((el) => {
                         return (
@@ -67,10 +71,6 @@ export default function Home(){
                     })
                 }
             </div>
-            <br/>
-            <Link to='/'>
-                Volver a la LandingPage
-            </Link>
         </div>
     )
 }
