@@ -1,15 +1,25 @@
 import React from 'react';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getDogs } from '../actions';
 import Card from './Card';
+import Paginado from './Paginado'
 import './styles/Home.css';
 
 
 export default function Home(){
     const dispatch = useDispatch()
     const allDogs = useSelector((state) => state.dogs)
+    const [currentPage, setCurrentPage] = useState(1)   //mi pagina actual que va a arrancar en 1
+    const [dogsPorPage, setDogsPorPage] = useState(8)   //mis perros por pagina que van a arrancar siendo 8
+    const indexOfLastDog = currentPage * dogsPorPage    //tengo el indice del ultimo perro que es, mi pagina por los perros por pagina //8
+    const indexOfFirstDog = indexOfLastDog - dogsPorPage //tengo el indice de mi primer perro que va a ser, el indice del ultimo perro menos la cantidad de perros por pagina //0
+    const currentDogs  = allDogs.slice(indexOfFirstDog, indexOfLastDog)  //slice = agarra el arreglo, toma una porcion de lo que yo le estoy pasando por paramentro
+
+    const paginado = (pageNumbers) => {
+        setCurrentPage(pageNumbers)
+    }
 
     useEffect(() => {
         dispatch(getDogs())
@@ -60,9 +70,8 @@ export default function Home(){
                     <option value= 'created'>Creados</option>
                     <option value= 'api'>Existentes</option>
                 </select>
-
                 {
-                    allDogs?.map((el) => {
+                    currentDogs?.map((el) => {
                         return (
                             <Link to={'/home/' + el.id} key={el.id}>
                                 <Card name={el.name} image={el.image} weight={el.weight} height={el.height} />
@@ -70,6 +79,11 @@ export default function Home(){
                         )
                     })
                 }
+                <Paginado
+                dogsPorPage= {dogsPorPage}
+                allDogs= {allDogs.length}
+                paginado= {paginado}
+                />
             </div>
         </div>
     )
