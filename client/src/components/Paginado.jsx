@@ -5,7 +5,7 @@ export default function Paginado({dogsPorPage, allDogs, paginado}){
     const pageNumbers = []
 
     for (let i = 0; i <= Math.ceil(allDogs/dogsPorPage); i++){
-        pageNumbers.push(i)
+        pageNumbers.push(i+1)
     }
     return (
         <nav className="content">
