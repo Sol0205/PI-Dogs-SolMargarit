@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { getDogs, filterDogsByTemperaments } from "../actions";
+import { getDogs, filterDogsByTemperaments, filterCreated } from "../actions";
 import Card from "./Card";
 import Paginado from "./Paginado";
 import "./styles/Home.css";
@@ -34,6 +34,10 @@ export default function Home() {
     dispatch(filterDogsByTemperaments(event.target.value));
   }
 
+  function handleFilterCreated(e){
+    dispatch(filterCreated(e.target.value))
+  }
+
   return (
     <div className="container_home">
       <Link to="/home/DogCreate">Crear Perro</Link>
@@ -52,8 +56,8 @@ export default function Home() {
 
       <div>
         <select>
-          <option value="asc">Ascendente</option>
-          <option value="desc">Descendente</option>
+          <option value="asc">A - Z</option>
+          <option value="desc">Z - A</option>
         </select>
         <select onChange={event => handleFilterTemperaments(event)}>
           <option value="allTemperaments">Todos los temperamentos</option>
@@ -68,8 +72,8 @@ export default function Home() {
           <option value="Trainable">Entrenable</option>
           <option value="Protective">Protector</option>
         </select>
-        <select>
-          <option value="all/Api/Created">Todos</option>
+        <select onChange={e => handleFilterCreated(e)}>
+          <option value="all">Todos</option>
           <option value="created">Creados</option>
           <option value="api">Existentes</option>
         </select>

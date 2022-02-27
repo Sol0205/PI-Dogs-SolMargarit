@@ -31,13 +31,16 @@ const create = async (req, res) => {
     weight,
     life_span,
     image,
-    temperaments
+    temperament
   } = req.body
 
   try {
+    // valida name y image
     if (!name || !image) {
       return res.json('Debe ingresar un nombre y una imagen para crear una receta')
     }
+
+    // este metodo guarda el perro en la base de datos
     const dogCreated = await Dog.create({
       name,
       temperament,
@@ -46,7 +49,11 @@ const create = async (req, res) => {
       life_span,
       image
     })
-    const temperamentDb = await Temperament.findAll({ where: { name: temperaments } })
+
+    // busca todos los temperamentos que cpincidad con los temperamentos que se pasan
+    const temperamentDb = await Temperament.findAll({ where: { name: temperament } })
+
+    // es  un promesa que al perro creado le añade el temperamento
     await dogCreated.addTemperament(temperamentDb)
 
     res.send('Creado con exito!')

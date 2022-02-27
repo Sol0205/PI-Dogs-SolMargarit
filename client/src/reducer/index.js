@@ -28,6 +28,16 @@ function rootReducer(state = initialState, temperament) {
         ...state,
         dogs: statusFiltered,
       };
+    case "FILTER_CREATED":
+      const allDogs2 = state.allDogs
+      const createdFilter =
+        temperament.payload === 'created'
+        ? allDogs2.filter(el => el.createdInDB)
+        : allDogs2.filter(el => !el.createdInDB)
+      return {
+        ...state,
+        dogs: temperament.payload === 'all' ? state.allDogs : createdFilter
+      }
     default:
       return state;
   }
