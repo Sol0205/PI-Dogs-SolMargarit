@@ -10,3 +10,11 @@ export function getDogs(){
         })
     }
 }
+
+export function filterDogsByTemperaments(payload) {
+    console.log(payload)
+    return {
+        type: 'FILTER_BY_TEMPERAMENTS',
+        payload
+    }
+}

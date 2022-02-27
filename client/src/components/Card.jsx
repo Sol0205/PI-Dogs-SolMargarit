@@ -8,7 +8,6 @@ export default function Card({ name, weight, height, image}) {
             <h3 className="title">{name}</h3>
             <p className="info-card">Peso: {weight.imperial} Kg</p>
             <p className="info-card">Altura: {height.imperial} Cm</p>
-            <a href="detall">Leer Màs</a>
         </div>
     )
 }
