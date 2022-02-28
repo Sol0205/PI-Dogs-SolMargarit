@@ -38,6 +38,31 @@ function rootReducer(state = initialState, temperament) {
         ...state,
         dogs: temperament.payload === 'all' ? state.allDogs : createdFilter
       }
+
+    case 'ORDER_BY_NAME':
+      const sortedArr = temperament.payload === 'asc' ?
+        state.dogs.sort(function (a, b) {
+          if (a.name > b.name) {
+            return 1
+          }
+          if (b.name > a.name) {
+            return -1
+          }
+          return 0
+        }) :
+        state.dogs.reverse(function (a, b) {
+          if (a.name > b.name) {
+            return -1
+          }
+          if (a.name > b.name) {
+            return 1
+          }
+          return 0
+        })
+      return{
+        ...state,
+        dogs: sortedArr
+      }
     default:
       return state;
   }
