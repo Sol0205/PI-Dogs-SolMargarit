@@ -11,6 +11,8 @@
     position: relative;
     overflow: hidden;
     list-style: none;
+	background:#037E8C;
+	font-weight:bold;
 }
 
 .botones-paginado{
@@ -28,9 +30,4 @@
 .botones-paginado:hover{
     background-color: coral;
     color:white;
-}
-
-.paginacion .active {
-	background:#037E8C;
-	font-weight:bold;
 }

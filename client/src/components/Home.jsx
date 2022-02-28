@@ -75,9 +75,9 @@ export default function Home() {
           <option value="desc">Z - A</option>
         </select>
         <select value={ordenKG} onChange={e => handleSortByKG(e)}>
-          <option value=""> KG </option>
+          <option value=""> nada </option>
           <option value="minKG"> - KG </option>
-          <option value="maxKG"> - KG </option>
+          <option value="maxKG"> + KG </option>
         </select>
         <select onChange={event => handleFilterTemperaments(event)}>
           <option value="allTemperaments">Todos los temperamentos</option>
