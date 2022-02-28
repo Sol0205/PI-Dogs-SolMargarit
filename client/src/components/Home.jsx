@@ -94,6 +94,7 @@ export default function Home() {
                   image={el.image}
                   weight={el.weight}
                   height={el.height}
+                  temperament={el.temperament}
                 />
               </Link>
             );
