@@ -103,11 +103,11 @@ __Ruta principal__: debe contener
   - Temperamento
   - Peso
 - [x] Botones/Opciones para filtrar por:
-    - [x] Temperamento 
+    - [x] Temperamento
     - [x] Raza existente (es decir las que vienen de la API) o agregada por nosotros (creadas mediante el form)
-- [ ] Botones/Opciones para ordenar tanto ascendentemente como descendentemente las razas de perro por:
-    - [x] Orden alfabético 
-    - [ ] Peso
+- [x] Botones/Opciones para ordenar tanto ascendentemente como descendentemente las razas de perro por:
+    - [x] Orden alfabético
+    - [x] Peso
 - [x] Paginado para ir buscando y mostrando las siguientes razas, mostrando 8 razas por página.
 
 __IMPORTANTE__: Dentro de la Ruta Principal se deben mostrar tanto las razas de perros traidas desde la API como así también las de la base de datos, pero NO está permitido almacenar en la base de datos las razas de perros de la API sino que solamente se pueden guardar aquellas creadas desde el form.

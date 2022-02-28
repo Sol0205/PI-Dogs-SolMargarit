@@ -4,26 +4,43 @@ const initialState = {
 };
 
 function getDogsByTemperament(temperament, allDogs) {
-  debugger;
   return allDogs.filter((el) => {
     return el.temperament?.includes(temperament);
   });
 }
 
-function rootReducer(state = initialState, temperament) {
-  switch (temperament.type) {
+function getPromedio(array) {
+  if (array.length === 1) {
+    if (isNaN(array[0])) {
+      return 0
+    }
+  return array[0]
+}
+  return array[0] + array[1]/2
+}
+
+function obtenerPesos(string){
+  return string.split('-').map(str => {
+    const sinExpacion = str.trim()
+    const numeroParseado = parseInt(sinExpacion)
+    return numeroParseado
+  })
+}
+
+function rootReducer(state = initialState, { payload, type }) {
+  switch (type) {
     case "GET_DOGS":
       return {
         ...state,
-        dogs: temperament.payload,
-        allDogs: temperament.payload,
+        dogs: payload,
+        allDogs: payload,
       };
 
     case "FILTER_BY_TEMPERAMENTS":
       const statusFiltered =
-        temperament.payload === "allTemperaments"
+        payload === "allTemperaments"
           ? state.allDogs
-          : getDogsByTemperament(temperament.payload, state.allDogs);
+          : getDogsByTemperament(payload, state.allDogs);
       return {
         ...state,
         dogs: statusFiltered,
@@ -31,16 +48,16 @@ function rootReducer(state = initialState, temperament) {
     case "FILTER_CREATED":
       const allDogs2 = state.allDogs
       const createdFilter =
-        temperament.payload === 'created'
+        payload === 'created'
         ? allDogs2.filter(el => el.createdInDB)
         : allDogs2.filter(el => !el.createdInDB)
       return {
         ...state,
-        dogs: temperament.payload === 'all' ? state.allDogs : createdFilter
+        dogs: payload === 'all' ? state.allDogs : createdFilter
       }
 
     case 'ORDER_BY_NAME':
-      const sortedArr = temperament.payload === 'asc' ?
+      const sortedArr = payload === 'asc' ?
         state.dogs.sort(function (a, b) {
           if (a.name > b.name) {
             return 1
@@ -62,6 +79,40 @@ function rootReducer(state = initialState, temperament) {
       return{
         ...state,
         dogs: sortedArr
+      }
+    case 'ODER_BY_KG':
+      const sortedArrbyKg = payload === 'minKG' ?
+        state.dogs.sort(function(a, b) {
+          const losPesosDeA = obtenerPesos(a.weight.metric)
+          const promedioDeA = getPromedio(losPesosDeA);
+          const losPesosDeB  = obtenerPesos(b.weight.metric)
+          const promedioDeB = getPromedio(losPesosDeB);
+
+          if (promedioDeA > promedioDeB) {
+            return 1
+          }
+          if (promedioDeB > promedioDeA) {
+            return -1
+          }
+          return 0
+        }) :
+        state.dogs.reverse(function (a, b) {
+          const losPesosDeA = obtenerPesos(a.weight.metric)
+          const promedioDeA = getPromedio(losPesosDeA);
+          const losPesosDeB  = obtenerPesos(b.weight.metric)
+          const promedioDeB = getPromedio(losPesosDeB);
+
+          if (promedioDeA > promedioDeB) {
+            return -1
+          }
+          if (promedioDeA > promedioDeB) {
+            return 1
+          }
+          return 0
+        })
+      return{
+        ...state,
+        dogs: sortedArrbyKg
       }
     default:
       return state;

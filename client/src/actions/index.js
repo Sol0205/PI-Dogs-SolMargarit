@@ -31,3 +31,10 @@ export function orderByName(payload) {
     payload,
   };
 }
+
+export function orderByKg(payload) {
+  return {
+    type: "ODER_BY_KG",
+    payload,
+  }
+}

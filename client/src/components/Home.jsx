@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { getDogs, filterDogsByTemperaments, filterCreated, orderByName } from "../actions";
+import { getDogs, filterDogsByTemperaments, filterCreated, orderByName, orderByKg } from "../actions";
 import Card from "./Card";
 import Paginado from "./Paginado";
 import "./styles/Home.css";
@@ -10,6 +10,7 @@ import "./styles/Home.css";
 export default function Home() {
   const dispatch = useDispatch();
   const [orden, setOrden] = useState('asc') //[orden, ...]
+  const [ordenKG, setOrdenByKG] = useState('') //[ordenKG, ...]
   const allDogs = useSelector((state) => state.dogs);
   const [currentPage, setCurrentPage] = useState(1); //mi pagina actual que va a arrancar en 1
   const [dogsPorPage ] = useState(8); //[..., setDogsPorPage]   //mis perros por pagina que van a arrancar siendo 8
@@ -31,7 +32,6 @@ export default function Home() {
   }
 
   function handleFilterTemperaments(event) {
-    debugger
     dispatch(filterDogsByTemperaments(event.target.value));
   }
 
@@ -44,6 +44,13 @@ export default function Home() {
     dispatch(orderByName(e.target.value))
     setCurrentPage(1)
     setOrden(e.target.value)
+  }
+
+  function handleSortByKG(e) {
+    e.preventDefault()
+    dispatch(orderByKg(e.target.value))
+    setCurrentPage(1)
+    setOrdenByKG(e.target.value)
   }
 
   return (
@@ -66,6 +73,11 @@ export default function Home() {
         <select value={orden} onChange={e => handleSort(e)}>
           <option value="asc">A - Z</option>
           <option value="desc">Z - A</option>
+        </select>
+        <select value={ordenKG} onChange={e => handleSortByKG(e)}>
+          <option value=""> KG </option>
+          <option value="minKG"> - KG </option>
+          <option value="maxKG"> - KG </option>
         </select>
         <select onChange={event => handleFilterTemperaments(event)}>
           <option value="allTemperaments">Todos los temperamentos</option>
@@ -93,7 +105,6 @@ export default function Home() {
                   name={el.name}
                   image={el.image}
                   weight={el.weight}
-                  height={el.height}
                   temperament={el.temperament}
                 />
               </Link>
