@@ -10,6 +10,21 @@ export function getDogs() {
   };
 }
 
+export function searchNameDogs(name) {
+  return async function(dispatch){
+    try {
+      var json = await axios.get('http://localhost:3001/dogs?name=' + name)
+      return dispatch({
+        type: 'SEARCH_NAME_DOGS',
+        payload: json.data
+      })
+    }
+    catch(err) {
+      console.log(err)
+    }
+  }
+}
+
 export function filterDogsByTemperaments(payload) {
   console.log(payload);
   return {

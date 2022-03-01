@@ -1,5 +1,17 @@
 .container-card{
-    padding: 3px 10px;
-    border: PowderBlue 5px solid;
-    border-radius: 20px;
+    padding: 0;
+    border: #969696 1px solid;
+    display: inline-block;
+    width: 250px;
+    margin: 6px;
+    vertical-align: top;
+    min-height: 375px;
+    max-height: 342px;
+    background: #e8e8e8;
+}
+
+.info-card {
+    font-size: 12px;
+    text-align: left;
+    padding-left: 7px;
 }

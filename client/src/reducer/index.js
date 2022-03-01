@@ -36,6 +36,12 @@ function rootReducer(state = initialState, { payload, type }) {
         allDogs: payload,
       };
 
+    case "SEARCH_NAME_DOGS":
+      return {
+        ...state,
+        dogs: payload
+      }
+
     case "FILTER_BY_TEMPERAMENTS":
       const statusFiltered =
         payload === "allTemperaments"
@@ -71,7 +77,7 @@ function rootReducer(state = initialState, { payload, type }) {
           if (a.name > b.name) {
             return -1
           }
-          if (a.name > b.name) {
+          if (b.name > a.name) {
             return 1
           }
           return 0
