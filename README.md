@@ -96,7 +96,7 @@ __Pagina inicial__: deben armar una landing page con
 - [x] Botón para ingresar al home (`Ruta principal`)
 
 __Ruta principal__: debe contener
-- [ ] Input de búsqueda para encontrar razas de perros por nombre
+- [x] Input de búsqueda para encontrar razas de perros por nombre
 - [x] Área donde se verá el listado de razas de perros. Deberá mostrar su:
   - Imagen
   - Nombre
@@ -113,10 +113,10 @@ __Ruta principal__: debe contener
 __IMPORTANTE__: Dentro de la Ruta Principal se deben mostrar tanto las razas de perros traidas desde la API como así también las de la base de datos, pero NO está permitido almacenar en la base de datos las razas de perros de la API sino que solamente se pueden guardar aquellas creadas desde el form.
 
 __Ruta de detalle de raza de perro__: debe contener
-- [ ] Los campos mostrados en la ruta principal para cada raza (imagen, nombre y temperamento)
-- [ ] Altura
-- [ ] Peso
-- [ ] Años de vida
+- [x] Los campos mostrados en la ruta principal para cada raza (imagen, nombre y temperamento)
+- [x] Altura
+- [x] Peso
+- [x] Años de vida
 
 __Ruta de creación de raza de perro__: debe contener
 - [ ] Un formulario __controlado con JavaScript__ con los siguientes campos:
@@ -159,11 +159,11 @@ __IMPORTANTE__: No está permitido utilizar los filtrados, ordenamientos y pagin
 - [x] __GET /dogs?name="..."__:
   - Obtener un listado de las razas de perro que contengan la palabra ingresada como query parameter
   - Si no existe ninguna raza de perro mostrar un mensaje adecuado
-- [ ] __GET /dogs/{idRaza}__:
+- [x] __GET /dogs/{idRaza}__:
   - Obtener el detalle de una raza de perro en particular
   - Debe traer solo los datos pedidos en la ruta de detalle de raza de perro
   - Incluir los temperamentos asociados
-- [ ] __GET /temperament__:
+- [x] __GET /temperament__:
   - Obtener todos los temperamentos posibles
   - En una primera instancia deberán obtenerlos desde la API externa y guardarlos en su propia base de datos y luego ya utilizarlos desde allí
 - [ ] __POST /dog__:
