@@ -1,27 +1,27 @@
-.container_home{
+/* .container_home{
     background: url('../../images/dog1-1920x1347.jpg') no-repeat 50% fixed;
-}
+} */
 
 .container_nav{
-    background-color: aqua;
+    background-color: rgba(134, 247, 255, 0.226);
     display: flex;
     justify-content: space-between;
     height: 8vh;
 }
 
 .container_filters_and_cards{
-    background-color: greenyellow;
+    /* background-color: greenyellow; */
     display: flex;
     justify-content: space-around;
 }
 
 .container_filters{
-    background-color: salmon;
+    background-color: rgba(41, 41, 41, 0.582);
     width: 20vw;
 }
 
 .container_cards {
-    background-color: orangered;
+    background-color: rgba(41, 41, 41, 0.404);
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -29,7 +29,7 @@
 }
 
 .container_paginado{
-    background-color: blue;
+    /* background-color: blue; */
 }
 
 .wrapper-card {

@@ -1,0 +1,11 @@
+.container_nav{
+    background-color: rgba(134, 247, 255, 0.226);
+    display: flex;
+    justify-content: space-between;
+    height: 8vh;
+}
+
+.container_image_and_info{
+    display: flex;
+    justify-content: space-around;
+}

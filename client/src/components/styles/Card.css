@@ -8,6 +8,8 @@
     min-height: 375px;
     max-height: 342px;
     background: #e8e8e8;
+    box-shadow: 2px 2px 5px #999;
+    box-shadow: 2px 2px 5px #999;
 }
 
 .info-card {

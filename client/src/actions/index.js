@@ -53,3 +53,23 @@ export function orderByKg(payload) {
     payload,
   }
 }
+
+export function getDetails(id) {
+  debugger
+  return async function(dispatch){
+    try {
+      debugger
+      var json = await axios.get('http://localhost:3001/Dogs/' + id)
+      var image = await axios.get('https://api.thedogapi.com/v1/images/' + json.data.reference_image_id)
+      return dispatch({
+        type: "GET_DETAIL_DOGS",
+        payload: {
+          ...json.data,
+          image: image.data.url
+        }
+      })
+    } catch (err) {
+      console.log(err)
+    }
+  }
+}

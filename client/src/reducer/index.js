@@ -1,6 +1,7 @@
 const initialState = {
   dogs: [],
   allDogs: [],
+  detail: {},
 };
 
 function getDogsByTemperament(temperament, allDogs) {
@@ -119,6 +120,12 @@ function rootReducer(state = initialState, { payload, type }) {
       return{
         ...state,
         dogs: sortedArrbyKg
+      }
+    case "GET_DETAIL_DOGS":
+      debugger
+      return{
+        ...state,
+        detail: payload
       }
     default:
       return state;
